@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Genero;
+use App\Http\Resources\GeneroResource;
+
+
 
 class GeneroController extends Controller
 {
