@@ -7,12 +7,11 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class GeneroResource extends JsonResource
 {
-     
     public function toArray(Request $request): array
     {
-      return [
-        'nome' => $this->GNRNOME,
-        'codigo' => $this->GNRCODIGO, 
-    ];
+        return [
+            'nome' => $this->GNRNOME,
+            'codigo' => $this->GNRCODIGO,
+        ];
     }
 }

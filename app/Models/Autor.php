@@ -10,7 +10,7 @@ class Autor extends Model
 
     protected $primaryKey = 'AUTCODIGO';
 
-    public function timestamps() { return false; } 
+    public $timestamps = false;
 
     protected $fillable = [
         'AUTNOME',
