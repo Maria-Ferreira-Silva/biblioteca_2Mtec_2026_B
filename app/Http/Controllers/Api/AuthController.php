@@ -8,8 +8,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
+/**
+ * Controller responsável pela autenticação dos usuários na API.
+ */
 class AuthController extends Controller
 {
+    /**
+     * Realiza o login do usuário e gera o token de acesso Sanctum.
+     */
     public function login(Request $request)
     {
         $request->validate([
