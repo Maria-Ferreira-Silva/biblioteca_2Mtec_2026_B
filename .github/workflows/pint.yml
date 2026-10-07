@@ -32,12 +32,30 @@ jobs:
         run: composer install --no-interaction --prefer-dist --no-progress --ignore-platform-reqs
 
       - name: Rodar Pint
+        if: steps.composer_install.outcome == 'success'
         run: |
           if ./vendor/bin/pint --test; then
-            echo "## ✅ Pint — nenhum problema de estilo" >> "$GITHUB_STEP_SUMMARY"
+            corpo="<!-- pint-bot -->
+          ## ✅ Pint — nenhum problema de estilo"
           else
-            echo "## ❌ Pint encontrou problemas de estilo" >> "$GITHUB_STEP_SUMMARY"
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo 'Rode `./vendor/bin/pint` localmente (sem `--test`) para corrigir automaticamente, depois faça commit e push.' >> "$GITHUB_STEP_SUMMARY"
-            exit 1
+            pint_ok=1
+            corpo="<!-- pint-bot -->
+          ## ❌ Pint encontrou problemas de estilo
+
+          Rode \`./vendor/bin/pint\` localmente (sem \`--test\`) para corrigir automaticamente, depois faça commit e push."
           fi
+          echo "$corpo" >> "$GITHUB_STEP_SUMMARY"
+          echo "$corpo" > /tmp/comentario.md
+          echo "${{ github.event.pull_request.number }}" > /tmp/pr_number.txt
+          [ -z "$pint_ok" ]
+
+      - name: Publicar artefato do comentário
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-comment-pint
+          path: |
+            /tmp/comentario.md
+            /tmp/pr_number.txt
+          retention-days: 1
+          if-no-files-found: ignore
