@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Modelo representativo da tabela de autores do banco de dados.
+ * Modelo representativo da tabela de autores do banco de dados (tabela AUTORES).
  */
 class Autor extends Model
 {
-    protected $table = 'autores';
+    protected $table = 'AUTORES';
 
     protected $primaryKey = 'AUTCODIGO';
 
