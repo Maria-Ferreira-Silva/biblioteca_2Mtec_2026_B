@@ -19,7 +19,7 @@ jobs:
       - name: Configurar PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.3"
+          php-version: "8.4"
           coverage: none
 
       - name: Cache do Composer
@@ -29,7 +29,7 @@ jobs:
           key: composer-${{ hashFiles('composer.lock') }}
 
       - name: Instalar dependências
-        run: composer install --no-interaction --prefer-dist --no-progress
+        run: composer install --no-interaction --prefer-dist --no-progress --ignore-platform-reqs
 
       - name: Rodar Pint
         run: |
