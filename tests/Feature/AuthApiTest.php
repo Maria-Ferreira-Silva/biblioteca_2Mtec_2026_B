@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-
-
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
@@ -11,7 +9,7 @@ use Tests\TestCase;
 
 class AuthApiTest extends TestCase
 {
-  use RefreshDatabase;
+    use RefreshDatabase;
 
     #[Test]
     public function login_correto_deve_devolver_token()
@@ -27,7 +25,7 @@ class AuthApiTest extends TestCase
         ]);
 
         $response->assertStatus(200);
-        //$response->assertJsonStructure(['token']);
+        // $response->assertJsonStructure(['token']);
     }
 
     #[Test]
@@ -43,7 +41,7 @@ class AuthApiTest extends TestCase
             'password' => 'senha_errada',
         ]);
 
-        $response->assertStatus(422); 
+        $response->assertStatus(422);
     }
 
     #[Test]

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AutorController;
-use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\GeneroController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
