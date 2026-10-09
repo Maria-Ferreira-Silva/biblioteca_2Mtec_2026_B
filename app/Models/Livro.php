@@ -9,10 +9,8 @@ class Livro extends Model
 {
     use HasFactory;
 
-    
     protected $table = 'LIVROS';
 
-   
     protected $primaryKey = 'LVRCODIGO';
 
     /**
@@ -21,9 +19,9 @@ class Livro extends Model
      * vamos deixar o relacionamento mapeado. Se o grupo atualizar o banco futuramente,
      * o código já estará pronto!
      */
-     public function autor()
+    public function autor()
     {
-        
+
         return $this->belongsTo(Autor::class, 'LVRAUTCODIGO', 'AUTCODIGO');
     }
 }

@@ -4,21 +4,21 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Livro;
-use Illuminate\Http\Request;
 
 class LivroController extends Controller
 {
     public function index()
     {
-        
-        return response()->json(Livro::with('autor')->get(), 200);
+
+        return LivroResource::collection(Livro::with('autor')->get());
+
     }
 
     public function show($id)
     {
         $livro = Livro::with('autor')->find($id);
 
-        if (!$livro) {
+        if (! $livro) {
             return response()->json(['message' => 'Livro não encontrado'], 404);
         }
 

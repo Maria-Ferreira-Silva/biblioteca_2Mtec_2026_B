@@ -2,15 +2,14 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AutorController;
-use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\GeneroController;
+use App\Http\Controllers\Api\LivroController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\LivroController;
 
 Route::post('/login', [AuthController::class, 'login']);
 
- Route::get('/livros', [LivroController::class, 'index']);
+Route::get('/livros', [LivroController::class, 'index']);
 Route::get('/livros/{id}', [LivroController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -23,5 +22,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/users', [UserController::class, 'index']);
 
-   
 });
