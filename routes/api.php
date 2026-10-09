@@ -6,19 +6,22 @@ use App\Http\Controllers\Api\ClienteController;
 use App\Http\Controllers\Api\GeneroController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\LivroController;
 
 Route::post('/login', [AuthController::class, 'login']);
+
+ Route::get('/livros', [LivroController::class, 'index']);
+Route::get('/livros/{id}', [LivroController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/autores', [AutorController::class, 'index']);
     Route::get('/autores/{id}', [AutorController::class, 'show']);
 
-    Route::get('/clientes', [ClienteController::class, 'index']);
-    Route::get('/clientes/{id}', [ClienteController::class, 'show']);
-
     Route::get('/generos', [GeneroController::class, 'index']);
     Route::get('/generos/{id}', [GeneroController::class, 'show']);
 
     Route::get('/users', [UserController::class, 'index']);
+
+   
 });
