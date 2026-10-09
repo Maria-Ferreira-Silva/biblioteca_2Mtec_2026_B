@@ -14,8 +14,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/autores', [AutorController::class, 'index']);
     Route::get('/autores/{id}', [AutorController::class, 'show']);
 
-    Route::get('/clientes', [ClienteController::class, 'index']);
-    Route::get('/clientes/{id}', [ClienteController::class, 'show']);
+    Route::get('/clientes', [ClientesController::class, 'index']);
+    Route::get('/clientes/{id}', [ClientesController::class, 'show']);
 
     Route::get('/generos', [GeneroController::class, 'index']);
     Route::get('/generos/{id}', [GeneroController::class, 'show']);
